@@ -23,9 +23,9 @@ header{
 .header-container{
     display:flex;
     align-items:center;
-    justify-content:center;
+    justify-content:space-between;
     flex-wrap:wrap;
-    text-align:center;
+    padding:0 10px;
 }
 
 /* Logo Circle */
@@ -45,6 +45,10 @@ header{
 /* Title Area */
 .title-area h1{
     margin:5px 0;
+}
+.title-area{
+    text-align:center;
+    flex:1;
 }
 
 .slogan{
@@ -149,9 +153,12 @@ iframe{
 
 }
     .menu-btn{
-    position:absolute;
-    right:15px;
-    top:15px;
+    background:#008081;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    font-size:18px;
+    border-radius:5px;
     background:#008081;
     color:white;
     border:none;
