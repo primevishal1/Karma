@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PharmaTutorHub</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f6f8;
+}
+
+header{
+    background:#0a4f70;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:20px;
+}
+
+.box{
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+}
+
+.item{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+}
+button{
+    padding:8px 12px;
+    background:#0a4f70;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+button:hover{
+    background:#083a52;
+}
+iframe{
+    width:100%;
+    height:250px;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>PharmaTutorHub</h1>
+<p>Notes and Video Learning for Students</p>
+</header>
+
+<div class="container">
+
+<!-- Upload Notes -->
+<div class="box">
+<h2>Upload Notes (PDF)</h2>
+<input type="file" id="fileInput">
+<button onclick="uploadNote()">Upload</button>
+</div>
+
+<!-- Notes List -->
+<div class="box">
+<h2>Available Notes</h2>
+<div id="notesContainer"></div>
+</div>
+
+<!-- Add Video -->
+<div class="box">
+<h2>Add YouTube Video</h2>
+<input type="text" id="videoLink" placeholder="Paste YouTube embed link">
+<button onclick="addVideo()">Add Video</button>
+</div>
+
+<!-- Video Section -->
+<div class="box">
+<h2>Video Lectures</h2>
+<div id="videoContainer"></div>
+</div>
+
+</div>
+
+<script>
+function uploadNote(){
+    let fileInput = document.getElementById("fileInput");
+    let file = fileInput.files[0];
+
+    if(!file){
+        alert("Please select a file first.");
+        return;
+    }
+
+    let container = document.getElementById("notesContainer");
+
+    let div = document.createElement("div");
+    div.className = "item";
+
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(file);
+    link.download = file.name;
+    link.textContent = file.name;
+
+    div.appendChild(link);
+    container.appendChild(div);
+
+    fileInput.value="";
+}
+
+function addVideo(){
+    let link = document.getElementById("videoLink").value;
+
+    if(!link){
+        alert("Paste video embed link");
+        return;
+    }
+
+    let container = document.getElementById("videoContainer");
+
+    let iframe = document.createElement("iframe");
+    iframe.src = link;
+    iframe.allowFullscreen = true;
+
+    container.appendChild(iframe);
+
+    document.getElementById("videoLink").value="";
+}
+</script>
+
+</body>
+</html>
