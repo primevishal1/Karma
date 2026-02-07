@@ -16,7 +16,7 @@ body{
 header{
     background:black;
     color:white;
-    padding:15px;
+    padding:12px 10px;
 }
 
 /* Header Layout */
@@ -24,58 +24,61 @@ header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    flex-wrap:wrap;
-    padding:0 10px;
+    gap:10px;
 }
 
-/* Logo Circle */
+/* Logo */
 .logo{
-    width:70px;
-    height:70px;
+    width:60px;
+    height:60px;
     border-radius:50%;
-    background:#008081;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-    margin:10px;
-    font-size:14px;
+    object-fit:cover;
 }
 
-/* Title Area */
-.title-area h1{
-    margin:5px 0;
-}
+/* Title */
 .title-area{
-    text-align:center;
     flex:1;
+    text-align:center;
+}
+
+.title-area h1{
+    margin:4px 0;
+    font-size:20px;
 }
 
 .slogan{
-    font-size:14px;
+    font-size:13px;
     color:#00cfcf;
 }
 
+/* Menu Button */
+.menu-btn{
+    background:#008081;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    font-size:18px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
 /* Navigation */
-nav{
+#menu{
+    display:none;
     background:#111;
-    padding:10px;
     text-align:center;
 }
 
-nav a{
+#menu a{
+    display:block;
+    padding:12px;
     color:white;
-    margin:6px;
     text-decoration:none;
-    font-weight:bold;
-    padding:8px 14px;
-    border-radius:6px;
-    background:#008081;
-    display:inline-block;
+    border-bottom:1px solid #333;
 }
 
-nav a:hover{
-    background:#00a6a6;
+#menu a:hover{
+    background:#008081;
 }
 
 /* Container */
@@ -94,7 +97,7 @@ nav a:hover{
     box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* Semester Grid */
+/* Grid */
 .semester-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
@@ -102,7 +105,7 @@ nav a:hover{
     margin-top:15px;
 }
 
-/* Semester Buttons */
+/* Buttons */
 .semester{
     background:#008081;
     color:white;
@@ -134,55 +137,7 @@ footer{
     padding:12px;
 }
 
-/* Desktop Improvements */
-@media (min-width:768px){
-
-.header-container{
-    justify-content:center;
-}
-
-.logo{
-    width:90px;
-    height:90px;
-    font-size:16px;
-}
-
-iframe{
-    height:320px;
-}
-
-}
-    .menu-btn{
-    background:#008081;
-    color:white;
-    border:none;
-    padding:8px 12px;
-    font-size:18px;
-    border-radius:5px;
-    background:#008081;
-    color:white;
-    border:none;
-    padding:8px 12px;
-    font-size:18px;
-    border-radius:5px;
-}
-
-/* Hide menu on mobile */
-#menu{
-    display:none;
-    background:#111;
-    text-align:center;
-}
-
-#menu a{
-    display:block;
-    padding:12px;
-    color:white;
-    text-decoration:none;
-    border-bottom:1px solid #333;
-}
-
-/* Desktop view */
+/* Desktop View */
 @media(min-width:768px){
 
 .menu-btn{
@@ -198,6 +153,20 @@ iframe{
     border:none;
     padding:10px 15px;
 }
+
+.logo{
+    width:80px;
+    height:80px;
+}
+
+.title-area h1{
+    font-size:26px;
+}
+
+iframe{
+    height:320px;
+}
+
 }
 </style>
 </head>
@@ -206,14 +175,15 @@ iframe{
 
 <header>
 <div class="header-container">
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
 <img src="01.png" class="logo">
 
 <div class="title-area">
 <h1>PharmaTutorHub</h1>
-<p class="slogan">Your Support = PharmaTutorHub❤️</p>
+<p class="slogan">Your Support = PharmaTutorHub</p>
 </div>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
 </div>
 </header>
@@ -224,7 +194,7 @@ iframe{
 <a href="#">Notes</a>
 <a href="#">Videos</a>
 <a href="#">Contact</a>
-</nav id="menu">
+</nav>
 
 <div class="container">
 
@@ -245,21 +215,18 @@ iframe{
 </div>
 
 <div class="section">
-    <div class="section">
 <h2>Study Resources</h2>
 
 <div class="semester-grid">
-
 <a href="important.html" class="semester">Important Questions</a>
-
 <a href="pyq.html" class="semester">Previous Year Papers</a>
-
 <a href="practice.html" class="semester">Solved Practice Questions</a>
-
 <a href="syllabus.html" class="semester">Syllabus</a>
+</div>
 
 </div>
-    </div>
+
+<div class="section">
 <h2>Latest Notes</h2>
 <p>Upload PDFs later and link them here.</p>
 <a href="#" class="semester">Download Sample Note</a>
@@ -275,7 +242,8 @@ iframe{
 <footer>
 <p>© 2026 PharmaTutorHub</p>
 </footer>
-    <script>
+
+<script>
 function toggleMenu(){
   var menu = document.getElementById("menu");
   if(menu.style.display === "block"){
@@ -284,7 +252,7 @@ function toggleMenu(){
     menu.style.display = "block";
   }
 }
-    </script>
+</script>
 
 </body>
 </html>
