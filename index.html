@@ -1,258 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PharmaTutorHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaTutorHub</title>
+    <style>
+        /* --- CORE STYLES --- */
+        * { box-sizing: border-box; }
+        body { margin:0; font-family:Arial, sans-serif; background:#f4f6f8; color: #333; line-height: 1.6; }
+        
+        /* --- HEADER --- */
+        header { background:black; color:white; padding:15px 20px; position: sticky; top: 0; z-index: 1000; }
+        .header-container { display:flex; align-items:center; justify-content:space-between; max-width: 1200px; margin: 0 auto; gap:15px; }
+        .logo-section { display:flex; align-items:center; gap:15px; }
+        .logo { width:55px; height:55px; border-radius:50%; object-fit:cover; border: 3px solid #00cfcf; }
+        .title-area h1 { margin:0; font-size:22px; text-transform: uppercase; letter-spacing: 1.5px; }
+        .slogan { font-size:13px; color:#00cfcf; display: block; margin-top: 3px; }
+        
+        .menu-btn { 
+            background:#008081; color:white; border:none; padding:12px 15px; 
+            font-size:22px; border-radius:8px; cursor:pointer; display:none; 
+        }
+        .menu-btn:hover { background:#00a6a6; }
+        
+        #menu { display:flex; gap:10px; }
+        #menu a { color:white; text-decoration:none; padding:12px 18px; 
+                  border-radius:6px; font-weight:500; transition:0.3s; }
+        #menu a:hover { background:rgba(0,128,129,0.2); }
 
-<style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#f4f6f8;
-}
+        /* --- LAYOUT --- */
+        .container { width:95%; max-width: 1200px; margin:auto; padding:30px 0; }
+        
+        /* --- SECTIONS --- */
+        .section { background:white; padding:30px; margin-bottom:25px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1); }
+        .section-title { margin:0 0 20px 0; border-bottom: 3px solid #008081; padding-bottom: 12px; color: #008081; font-size:24px; }
 
-/* Header */
-header{
-    background:black;
-    color:white;
-    padding:12px 10px;
-}
+        /* --- BUTTON CARDS --- */
+        .grid-box { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin-top:20px; }
+        .btn-card { 
+            background:linear-gradient(135deg, #008081, #00a6a6); 
+            color:white; padding:20px; border-radius:12px; text-align:center; 
+            font-weight:bold; text-decoration:none; display: flex;
+            align-items: center; justify-content: center; min-height: 70px;
+            transition:0.3s; box-shadow: 0 4px 15px rgba(0,128,129,0.3);
+            font-size:16px;
+        }
+        .btn-card:hover { transform:translateY(-5px); box-shadow: 0 8px 25px rgba(0,128,129,0.4); }
 
-/* Header Layout */
-.header-container{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-}
+        /* --- CAREER SECTION --- */
+        .career-grid { grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); }
+        .career-card { background:linear-gradient(135deg, #2c3e50, #34495e); }
 
-/* Logo */
-.logo{
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    object-fit:cover;
-}
+        /* --- SUBJECT BOXES --- */
+        .subject-grid { grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px; }
+        .subject-card { 
+            background:#f8f9fa; border:2px solid #e9ecef; padding:15px; 
+            border-radius:10px; text-align:center; transition:0.3s;
+        }
+        .subject-card:hover { border-color:#008081; transform:translateY(-2px); box-shadow:0 5px 15px rgba(0,128,129,0.1); }
+        .subject-card h4 { margin:0 0 10px 0; color:#008081; font-size:16px; }
 
-/* Title */
-.title-area{
-    flex:1;
-    text-align:center;
-}
+        /* --- LAB SUBJECT CARDS --- */
+        .lab-subject-card { 
+            background:white; border:2px solid #008081; margin-bottom:15px; 
+            border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,128,129,0.1);
+        }
+        .lab-header { background:#008081; color:white; padding:15px; margin:0; cursor:pointer; }
+        .lab-content { padding:20px; display:none; }
+        .lab-content.active { display:block; }
+        .lab-desc { margin-bottom:15px; color:#555; line-height:1.5; }
+        .pdf-link { background:#00a6a6; color:white; padding:10px 20px; 
+                   text-decoration:none; border-radius:6px; display:inline-block; 
+                   margin-right:10px; margin-bottom:10px; }
+        .pdf-link:hover { background:#008081; }
 
-.title-area h1{
-    margin:4px 0;
-    font-size:20px;
-}
+        /* --- VIDEO & FOOTER --- */
+        .video-section iframe { width:100%; height:350px; border-radius:12px; border: none; }
+        footer { background:black; color:white; text-align:center; padding:30px; margin-top:40px; }
+        .youtube-link { display:inline-flex; align-items:center; gap:10px; 
+                       color:#FF0000; text-decoration:none; font-weight:bold; 
+                       font-size:18px; margin-top:15px; }
+        .youtube-link:hover { color:#cc0000; }
+        .youtube-icon { font-size:30px; }
 
-.slogan{
-    font-size:13px;
-    color:#00cfcf;
-}
-
-/* Menu Button */
-.menu-btn{
-    background:#008081;
-    color:white;
-    border:none;
-    padding:8px 12px;
-    font-size:18px;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-/* Navigation */
-#menu{
-    display:none;
-    background:#111;
-    text-align:center;
-}
-
-#menu a{
-    display:block;
-    padding:12px;
-    color:white;
-    text-decoration:none;
-    border-bottom:1px solid #333;
-}
-
-#menu a:hover{
-    background:#008081;
-}
-
-/* Container */
-.container{
-    width:92%;
-    margin:auto;
-    padding:15px;
-}
-
-/* Section Cards */
-.section{
-    background:white;
-    padding:18px;
-    margin-bottom:18px;
-    border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-}
-
-/* Grid */
-.semester-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-    gap:12px;
-    margin-top:15px;
-}
-
-/* Buttons */
-.semester{
-    background:#008081;
-    color:white;
-    padding:14px;
-    border-radius:8px;
-    text-align:center;
-    font-weight:bold;
-    text-decoration:none;
-    transition:0.3s;
-}
-
-.semester:hover{
-    background:#00a6a6;
-    transform:translateY(-2px);
-}
-
-/* Video */
-iframe{
-    width:100%;
-    height:240px;
-    border-radius:8px;
-}
-
-/* Footer */
-footer{
-    background:black;
-    color:white;
-    text-align:center;
-    padding:12px;
-}
-
-/* Desktop View */
-@media(min-width:768px){
-
-.menu-btn{
-    display:none;
-}
-
-#menu{
-    display:block;
-}
-
-#menu a{
-    display:inline-block;
-    border:none;
-    padding:10px 15px;
-}
-
-.logo{
-    width:80px;
-    height:80px;
-}
-
-.title-area h1{
-    font-size:26px;
-}
-
-iframe{
-    height:320px;
-}
-
-}
-</style>
+        /* --- MOBILE RESPONSIVE --- */
+        @media(max-width:768px){ 
+            .header-container { flex-wrap:wrap; }
+            .menu-btn { display:block; }
+            #menu { display:none; position:absolute; top:100%; left:0; right:0; 
+                   background:black; flex-direction:column; padding:10px 0; }
+            #menu.active { display:flex; }
+            .title-area h1 { font-size:18px; }
+            .grid-box, .career-grid, .subject-grid { grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; }
+            .section { padding:20px 15px; }
+            .video-section iframe { height:250px; }
+        }
+        
+        @media(min-width:769px){ 
+            .logo { width:65px; height:65px; } 
+            .title-area h1 { font-size:28px; }
+            .video-section iframe { height:450px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-<div class="header-container">
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="https://via.placeholder.com/65/008081/ffffff?text=PTH" alt="PharmaTutorHub Logo" class="logo"> 
+                <div class="title-area">
+                    <h1>PharmaTutorHub</h1>
+                    <span class="slogan">Your Support = PharmaTutorHub</span>
+                </div>
+            </div>
+            
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-<img src="01.png" class="logo">
+            <nav id="menu">
+                <a href="#home">Home</a>
+                <a href="#semesters">Semesters</a>
+                <a href="#career">Careers</a>
+                <a href="#reports">Reports</a>
+                <a href="#articles">Articles</a>
+                <a href="#lab">Lab Manuals</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-<div class="title-area">
-<h1>PharmaTutorHub</h1>
-<p class="slogan">Your Support = PharmaTutorHub</p>
-</div>
+    <div class="container">
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <!-- SEMESTERS SECTION -->
+        <div class="section" id="semesters">
+            <h3 class="section-title">📚 Semester Notes</h3>
+            <div class="grid-box">
+                <a href="#" class="btn-card">Semester 1</a>
+                <a href="#" class="btn-card">Semester 2</a>
+                <a href="#" class="btn-card">Semester 3</a>
+                <a href="#" class="btn-card">Semester 4</a>
+                <a href="#" class="btn-card">Semester 5</a>
+                <a href="#" class="btn-card">Semester 6</a>
+                <a href="#" class="btn-card">Semester 7</a>
+                <a href="#" class="btn-card">Semester 8</a>
+            </div>
+        </div>
 
-</div>
-</header>
+        <!-- CAREER SECTION -->
+        <div class="section" id="career">
+            <h3 class="section-title">💼 Career Opportunities</h3>
+            <p style="color:#666; margin-bottom:20px; font-size:16px;">Post vacancies and roles for pharmacy professionals. Join our community discussions!</p>
+            <div class="grid-box career-grid">
+                <a href="https://groups.google.com/g/pharmatutorhub-vacancies" target="_blank" class="btn-card career-card">
+                    🆕 Post Vacancy
+                </a>
+                <a href="https://groups.google.com/g/pharmatutorhub-jobs" target="_blank" class="btn-card career-card">
+                    🔍 Find Jobs
+                </a>
+                <a href="https://groups.google.com/g/pharmatutorhub-career" target="_blank" class="btn-card career-card">
+                    💬 Career Discussions
+                </a>
+            </div>
+        </div>
 
-<nav id="menu">
-<a href="#">Home</a>
-<a href="#">Semesters</a>
-<a href="#">Notes</a>
-<a href="#">Videos</a>
-<a href="#">Contact</a>
-</nav>
+        <!-- TRAINING REPORTS -->
+        <div class="section" id="reports">
+            <h3 class="section-title">📋 Training Reports</h3>
+            <p style="font-size:15px; color:#666; margin-bottom:20px;">Download templates and submit your training reports.</p>
+            <div class="grid-box">
+                <a href="#" class="btn-card">🏥 Hospital Training I</a>
+                <a href="#" class="btn-card">🏭 Industrial Training</a>
+                <a href="#" class="btn-card">🏥 Hospital Training II</a>
+                <a href="#" class="btn-card">🏫 Practice School</a>
+            </div>
+        </div>
 
-<div class="container">
+        <!-- ARTICLES SECTION -->
+        <div class="section" id="articles">
+            <h3 class="section-title">📖 Articles & Research</h3>
+            <div class="grid-box">
+                <a href="#" class="btn-card">🧪 Practical Research</a>
+                <a href="#" class="btn-card">🎓 Academic Papers</a>
+                <a href="#" class="btn-card">🔬 Research Updates</a>
+            </div>
+        </div>
 
-<div class="section">
-<h2>Select Semester</h2>
+        <!-- LABORATORY MANUALS -->
+        <div class="section" id="lab">
+            <h3 class="section-title">🧪 Laboratory Manuals</h3>
+            
+            <div class="lab-subject-card">
+                <h4 class="lab-header" onclick="toggleLabContent('sem1')">Semester 1 Practical Manuals</h4>
+                <div id="sem1" class="lab-content">
+                    <div class="subject-card">
+                        <h4>Human Anatomy & Physiology</h4>
+                        <p class="lab-desc">Detailed practical procedures for anatomy and physiology experiments.</p>
+                        <a href="#" class="pdf-link">📥 Download PDF</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>Pharmaceutical Analysis I</h4>
+                        <p class="lab-desc">Limit tests, standardization, and analytical procedures.</p>
+                        <a href="#" class="pdf-link">📥 Download PDF</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>Pharmaceutics I</h4>
+                        <p class="lab-desc">Prescription handling and pharmaceutical calculations.</p>
+                        <a href="#" class="pdf-link">📥 Download PDF</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>Pharmaceutical Inorganic Chemistry</h4>
+                        <p class="lab-desc">Inorganic compound identification and limit tests.</p>
+                        <a href="#" class="pdf-link">📥 Download PDF</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>Communication Skills</h4>
+                        <p class="lab-desc">Practical communication exercises for pharmacy students.</p>
+                        <a href="#" class="pdf-link">📥 Download PDF</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>Remedial Biology</h4>
+                        <p class="lab-desc">Basic biology practicals for pharmacy foundation.</p>
+                        <a href="#" class="pdf-link">📥 Download PDF</a>
+                    </div>
+                </div>
+            </div>
 
-<div class="semester-grid">
-<a href="sem1.html" class="semester">Semester 1</a>
-<a href="sem2.html" class="semester">Semester 2</a>
-<a href="sem3.html" class="semester">Semester 3</a>
-<a href="sem4.html" class="semester">Semester 4</a>
-<a href="sem5.html" class="semester">Semester 5</a>
-<a href="sem6.html" class="semester">Semester 6</a>
-<a href="sem7.html" class="semester">Semester 7</a>
-<a href="sem8.html" class="semester">Semester 8</a>
-</div>
+            <div class="lab-subject-card">
+                <h4 class="lab-header" onclick="toggleLabContent('sem2')">Semester 2 Practical Manuals</h4>
+                <div id="sem2" class="lab-content">
+                    <div class="subject-card">
+                        <h4>Human Anatomy & Physiology II</h4>
+                        <p class="lab-desc">Advanced physiology practical experiments.</p>
+                        <a href="#" class="pdf-link">📥 Download PDF</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>Pharmaceutical Organic Chemistry I</h4>
+                        <p class="lab-desc">Organic compound identification techniques.</p>
+                        <a href="#" class="pdf-link">📥 Download PDF</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>Biochemistry</h4>
+                        <p class="lab-desc">Biochemical assays and enzyme studies.</p>
+                        <a href="#" class="pdf-link">📥 Download PDF</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>Computer Applications</h4>
+                        <p class="lab-desc">Pharmacy software and data analysis practicals.</p>
+                        <a href="#" class="pdf-link">📥 Download PDF</a>
+                    </div>
+                </div>
+            </div>
 
-</div>
+            <!-- Continue for Sem 3-7 similarly -->
+            <div class="lab-subject-card">
+                <h4 class="lab-header" onclick="toggleLabContent('sem3')">Semester 3 Practical Manuals</h4>
+                <div id="sem3" class="lab-content">
+                    <div class="subject-card"><h4>Physical Pharmaceutics I</h4><p>Solubility and surface tension studies.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                    <div class="subject-card"><h4>Pharmaceutical Microbiology</h4><p>Sterility testing and culture techniques.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                    <div class="subject-card"><h4>Pharmaceutical Engineering</h4><p>Size reduction and mixing processes.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                </div>
+            </div>
 
-<div class="section">
-<h2>Study Resources</h2>
+            <div class="lab-subject-card">
+                <h4 class="lab-header" onclick="toggleLabContent('sem4')">Semester 4</h4>
+                <div id="sem4" class="lab-content">
+                    <div class="subject-card"><h4>Medicinal Chemistry I</h4><p>Synthesis of drug molecules.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                    <div class="subject-card"><h4>Physical Pharmaceutics II</h4><p>Colloidal dispersions practicals.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                    <div class="subject-card"><h4>Pharmacology I</h4><p>Bioassay procedures.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                    <div class="subject-card"><h4>Pharmacognosy I</h4><p>Microscopy of crude drugs.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                </div>
+            </div>
 
-<div class="semester-grid">
-<a href="important.html" class="semester">Important Questions</a>
-<a href="pyq.html" class="semester">Previous Year Papers</a>
-<a href="practice.html" class="semester">Solved Practice Questions</a>
-<a href="syllabus.html" class="semester">Syllabus</a>
-</div>
+            <div class="lab-subject-card">
+                <h4 class="lab-header" onclick="toggleLabContent('sem5')">Semester 5</h4>
+                <div id="sem5" class="lab-content">
+                    <div class="subject-card"><h4>Industrial Pharmacy I</h4><p>Tablet formulation practicals.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                    <div class="subject-card"><h4>Pharmacology II</h4><p>Drug interaction studies.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                    <div class="subject-card"><h4>Pharmacognosy & Phytochemistry II</h4><p>Herbal extraction methods.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                </div>
+            </div>
 
-</div>
+            <div class="lab-subject-card">
+                <h4 class="lab-header" onclick="toggleLabContent('sem6')">Semester 6</h4>
+                <div id="sem6" class="lab-content">
+                    <div class="subject-card"><h4>Medicinal Chemistry III</h4><p>Advanced synthesis techniques.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                    <div class="subject-card"><h4>Pharmacology III</h4><p>Toxicology practicals.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                    <div class="subject-card"><h4>Herbal Drug Technology</h4><p>Standardization of herbals.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                </div>
+            </div>
 
-<div class="section">
-<h2>Latest Notes</h2>
-<p>Upload PDFs later and link them here.</p>
-<a href="#" class="semester">Download Sample Note</a>
-</div>
+            <div class="lab-subject-card">
+                <h4 class="lab-header" onclick="toggleLabContent('sem7')">Semester 7</h4>
+                <div id="sem7" class="lab-content">
+                    <div class="subject-card"><h4>Instrumental Methods of Analysis</h4><p>Spectroscopy and chromatography.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                    <div class="subject-card"><h4>Novel Drug Delivery Systems</h4><p>NDDS formulation techniques.</p><a href="#" class="pdf-link">📥 Download PDF</a></div>
+                </div>
+            </div>
+        </div>
 
-<div class="section">
-<h2>Video Lecture</h2>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-</div>
+        <!-- LATEST LECTURE -->
+        <div class="section video-section">
+            <h3 class="section-title">🎥 Latest Lecture</h3>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Latest Video Lecture" allowfullscreen></iframe>
+        </div>
 
-</div>
+    </div>
 
-<footer>
-<p>© 2026 PharmaTutorHub</p>
-</footer>
+    <footer>
+        <p>© 2026 PharmaTutorHub. All Rights Reserved.</p>
+        <a href="https://www.youtube.com/@PharmaTutorHub" target="_blank" class="youtube-link">
+            <span class="youtube-icon">📺</span> Subscribe to PharmaTutorHub YouTube Channel
+        </a>
+    </footer>
 
-<script>
-function toggleMenu(){
-  var menu = document.getElementById("menu");
-  if(menu.style.display === "block"){
-    menu.style.display = "none";
-  } else {
-    menu.style.display = "block";
-  }
-}
-</script>
+    <script>
+        function toggleMenu(){ 
+            var menu = document.getElementById("menu"); 
+            menu.classList.toggle("active");
+        } 
 
+        function toggleLabContent(id) {
+            var content = document.getElementById(id);
+            var allContents = document.querySelectorAll('.lab-content');
+            allContents.forEach(function(item) {
+                if (item !== content) item.classList.remove('active');
+            });
+            content.classList.toggle('active');
+        }
+    </script>
 </body>
-</html>
+    </html>
