@@ -148,6 +148,50 @@ iframe{
 }
 
 }
+    .menu-btn{
+    position:absolute;
+    right:15px;
+    top:15px;
+    background:#008081;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    font-size:18px;
+    border-radius:5px;
+}
+
+/* Hide menu on mobile */
+#menu{
+    display:none;
+    background:#111;
+    text-align:center;
+}
+
+#menu a{
+    display:block;
+    padding:12px;
+    color:white;
+    text-decoration:none;
+    border-bottom:1px solid #333;
+}
+
+/* Desktop view */
+@media(min-width:768px){
+
+.menu-btn{
+    display:none;
+}
+
+#menu{
+    display:block;
+}
+
+#menu a{
+    display:inline-block;
+    border:none;
+    padding:10px 15px;
+}
+}
 </style>
 </head>
 
@@ -155,6 +199,7 @@ iframe{
 
 <header>
 <div class="header-container">
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
 <img src="01.png" class="logo">
 
@@ -166,13 +211,13 @@ iframe{
 </div>
 </header>
 
-<nav>
+<nav id="menu">
 <a href="#">Home</a>
 <a href="#">Semesters</a>
 <a href="#">Notes</a>
 <a href="#">Videos</a>
 <a href="#">Contact</a>
-</nav>
+</nav id="menu">
 
 <div class="container">
 
@@ -223,6 +268,16 @@ iframe{
 <footer>
 <p>© 2026 PharmaTutorHub</p>
 </footer>
+    <script>
+function toggleMenu(){
+  var menu = document.getElementById("menu");
+  if(menu.style.display === "block"){
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
+}
+    </script>
 
 </body>
 </html>
