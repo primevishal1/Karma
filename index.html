@@ -7,8 +7,8 @@
 
 <style>
 body{
-    font-family: Arial, sans-serif;
     margin:0;
+    font-family:Arial, sans-serif;
     background:#f4f6f8;
 }
 
@@ -19,38 +19,62 @@ header{
     text-align:center;
 }
 
+nav{
+    background:#083a52;
+    padding:10px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    margin:10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:yellow;
+}
+
 .container{
     width:90%;
     margin:auto;
     padding:20px;
 }
 
-.box{
+.section{
     background:white;
     padding:20px;
+    margin-bottom:20px;
     border-radius:8px;
     box-shadow:0 2px 6px rgba(0,0,0,0.1);
-    margin-bottom:30px;
 }
 
-.item{
-    padding:10px;
-    border-bottom:1px solid #ddd;
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
 }
-button{
-    padding:8px 12px;
-    background:#0a4f70;
-    color:white;
-    border:none;
-    cursor:pointer;
+
+.subject{
+    background:#e8f1f5;
+    padding:15px;
+    border-radius:6px;
+    text-align:center;
+    font-weight:bold;
 }
-button:hover{
-    background:#083a52;
-}
+
 iframe{
     width:100%;
     height:250px;
     margin-top:10px;
+}
+
+footer{
+    background:#0a4f70;
+    color:white;
+    text-align:center;
+    padding:10px;
 }
 </style>
 </head>
@@ -59,84 +83,46 @@ iframe{
 
 <header>
 <h1>PharmaTutorHub</h1>
-<p>Notes and Video Learning for Students</p>
+<p>Pharmacy Notes | Video Lectures | Exam Preparation</p>
 </header>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Subjects</a>
+<a href="#">Notes</a>
+<a href="#">Videos</a>
+<a href="#">Contact</a>
+</nav>
 
 <div class="container">
 
-<!-- Upload Notes -->
-<div class="box">
-<h2>Upload Notes (PDF)</h2>
-<input type="file" id="fileInput">
-<button onclick="uploadNote()">Upload</button>
+<div class="section">
+<h2>Subjects</h2>
+
+<div class="subject-grid">
+<div class="subject">Pharmacology</div>
+<div class="subject">Pharmaceutics</div>
+<div class="subject">Pharmaceutical Chemistry</div>
+<div class="subject">Pharmacognosy</div>
+</div>
 </div>
 
-<!-- Notes List -->
-<div class="box">
-<h2>Available Notes</h2>
-<div id="notesContainer"></div>
+<div class="section">
+<h2>Latest Notes</h2>
+<p>Upload PDFs later and link them here.</p>
+<a href="#">Download Sample Note</a>
 </div>
 
-<!-- Add Video -->
-<div class="box">
-<h2>Add YouTube Video</h2>
-<input type="text" id="videoLink" placeholder="Paste YouTube embed link">
-<button onclick="addVideo()">Add Video</button>
-</div>
-
-<!-- Video Section -->
-<div class="box">
-<h2>Video Lectures</h2>
-<div id="videoContainer"></div>
+<div class="section">
+<h2>Video Lecture</h2>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
 </div>
 
 </div>
 
-<script>
-function uploadNote(){
-    let fileInput = document.getElementById("fileInput");
-    let file = fileInput.files[0];
-
-    if(!file){
-        alert("Please select a file first.");
-        return;
-    }
-
-    let container = document.getElementById("notesContainer");
-
-    let div = document.createElement("div");
-    div.className = "item";
-
-    let link = document.createElement("a");
-    link.href = URL.createObjectURL(file);
-    link.download = file.name;
-    link.textContent = file.name;
-
-    div.appendChild(link);
-    container.appendChild(div);
-
-    fileInput.value="";
-}
-
-function addVideo(){
-    let link = document.getElementById("videoLink").value;
-
-    if(!link){
-        alert("Paste video embed link");
-        return;
-    }
-
-    let container = document.getElementById("videoContainer");
-
-    let iframe = document.createElement("iframe");
-    iframe.src = link;
-    iframe.allowFullscreen = true;
-
-    container.appendChild(iframe);
-
-    document.getElementById("videoLink").value="";
-}
-</script>
+<footer>
+<p>© 2026 PharmaTutorHub</p>
+</footer>
 
 </body>
 </html>
