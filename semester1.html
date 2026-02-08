@@ -6,6 +6,8 @@
 <title>PharmaTutorHub</title>
 
 <style>
+
+/* BASE */
 body{
     margin:0;
     font-family:Arial, sans-serif;
@@ -20,7 +22,7 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
 }
 
 .header-container{
@@ -53,21 +55,22 @@ header{
 
 .slogan{
     font-size:12px;
-    color:#008081;
+    color:#00a6a6;
 }
 
+/* MENU */
 .menu a{
-    color:#333;
-    margin-left:15px;
+    color:white;
+    margin-left:18px;
     text-decoration:none;
     font-size:14px;
 }
 
 .menu a:hover{
-    color:#008081;
+    color:#00cfcf;
 }
 
-/* HERO BANNER */
+/* HERO */
 .hero-banner{
     width:100%;
     aspect-ratio:16/9;
@@ -81,16 +84,18 @@ header{
     object-fit:cover;
 }
 
-/* SECTION TITLE */
+/* SECTION */
 .section{
-    padding:20px;
+    padding:30px 20px;
+    max-width:1200px;
+    margin:auto;
 }
 
 .section h2{
-    margin-bottom:10px;
+    margin-bottom:15px;
 }
 
-/* NETFLIX ROW */
+/* CARD ROW */
 .row-container{
     position:relative;
 }
@@ -99,8 +104,8 @@ header{
     display:flex;
     overflow-x:auto;
     scroll-behavior:smooth;
-    gap:15px;
-    padding:10px 0;
+    gap:20px;
+    padding:10px 5px 20px 5px;
 }
 
 .card-row::-webkit-scrollbar{
@@ -111,7 +116,7 @@ header{
 .card{
     min-width:250px;
     background:white;
-    border-radius:10px;
+    border-radius:12px;
     overflow:hidden;
     flex-shrink:0;
     transition:0.3s;
@@ -146,7 +151,7 @@ header{
 .scroll-btn{
     position:absolute;
     top:40%;
-    background:rgba(255,255,255,0.9);
+    background:white;
     border:none;
     color:#333;
     font-size:22px;
@@ -156,15 +161,10 @@ header{
     box-shadow:0 2px 6px rgba(0,0,0,0.2);
 }
 
-.left-btn{ left:0; }
-.right-btn{ right:0; }
+.left-btn{ left:-5px; }
+.right-btn{ right:-5px; }
 
-/* MOBILE */
-@media(max-width:600px){
-    .menu{
-        display:none;
-    }
-    /* OUTCOME BOX DESIGN */
+/* OUTCOME BOX */
 .outcome-section{
     max-width:1000px;
     margin:40px auto;
@@ -196,17 +196,17 @@ header{
 
 .outcome-list li{
     margin-bottom:8px;
-    color:black;
 }
-/* QUOTE BOX DESIGN */
+
+/* QUOTE BOX */
 .quote-section{
     max-width:1000px;
-    margin:30px auto;
+    margin:30px auto 50px auto;
     padding:0 20px;
 }
 
 .quote-box{
-    background:#CCDDFF;   /* changed color */
+    background:#CCDDFF;
     border-radius:20px;
     padding:25px;
     box-shadow:0 4px 15px rgba(0,0,0,0.08);
@@ -214,7 +214,6 @@ header{
 }
 
 .quote-text{
-    color:black;
     font-size:18px;
     font-style:italic;
     line-height:1.6;
@@ -223,10 +222,32 @@ header{
 .quote-author{
     margin-top:15px;
     font-size:14px;
-    color:black;
     font-weight:bold;
 }
+
+/* MOBILE */
+@media(max-width:600px){
+
+.header-container{
+    flex-direction:column;
+    gap:10px;
+    text-align:center;
 }
+
+.menu{
+    display:none;
+}
+
+.scroll-btn{
+    display:none;
+}
+
+.card{
+    min-width:220px;
+}
+
+}
+
 </style>
 </head>
 
@@ -253,12 +274,12 @@ header{
 </div>
 </header>
 
-<!-- HERO BANNER -->
+<!-- HERO -->
 <div class="hero-banner">
 <img src="banner.jpg" alt="Banner">
 </div>
 
-<!-- SUBJECT SECTION -->
+<!-- SUBJECTS -->
 <div class="section">
 <h2>Subjects - Semester 1</h2>
 
@@ -298,7 +319,7 @@ header{
 <p>Professional communication for healthcare field.</p>
 </div>
 </div>
-    
+
 <div class="card">
 <img src="subject5.jpg">
 <div class="card-content">
@@ -322,42 +343,42 @@ header{
 <p>Quick Recap Of Maths.</p>
 </div>
 </div>
+
 </div>
 
 <button class="scroll-btn right-btn" onclick="scrollRow(300)">❯</button>
 </div>
 </div>
+
+<!-- OUTCOME -->
+<section class="outcome-section">
+<div class="outcome-box">
+<h2>What You Will Gain</h2>
+<p>After studying this subject, students will be able to:</p>
+<ul class="outcome-list">
+<li>Understand fundamental concepts clearly</li>
+<li>Improve practical and theoretical knowledge</li>
+<li>Prepare better for examinations</li>
+<li>Build a strong foundation for advanced subjects</li>
+</ul>
+</div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+<div class="quote-box">
+<p class="quote-text">
+"Success in pharmacy is not only about memorizing drugs, but understanding patients, science, and responsibility."
+</p>
+<div class="quote-author">— PharmaTutorHub</div>
+</div>
+</section>
+
 <script>
 function scrollRow(value){
-    document.getElementById("cardRow").scrollLeft += value;
+document.getElementById("cardRow").scrollLeft += value;
 }
 </script>
-<section class="outcome-section">
-    <div class="outcome-box">
-        <h2>What You Will Gain</h2>
-
-        <p>
-            After studying this subject, students will be able to:
-        </p>
-
-        <ul class="outcome-list">
-            <li>Understand fundamental concepts clearly</li>
-            <li>Improve practical and theoretical knowledge</li>
-            <li>Prepare better for examinations</li>
-            <li>Build a strong foundation for advanced subjects</li>
-        </ul>
-    </div>
-</section>
-    <section class="quote-section">
-    <div class="quote-box">
-        <p class="quote-text">
-            "Success in pharmacy is not only about memorizing drugs, 
-            but understanding patients, science, and responsibility."
-        </p>
-
-        <div class="quote-author">— PharmaTutorHub</div>
-    </div>
-    </section>
 
 </body>
-</html>
+    </html>
