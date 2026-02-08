@@ -1,64 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Semester 1 - PharmaTutorHub</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semester 1 - PharmaTutorHub</title>
 
-    <style>
-        body{
-            font-family:Arial;
-            margin:0;
-            background:#f4f6f8;
-        }
+<style>
 
-        .header{
-            background:#00cfcf;
-            color:white;
-            padding:15px;
-            text-align:center;
-        }
+/* HEADER (your same style) */
+header { background:black; color:white; padding:15px 20px; position: sticky; top: 0; z-index: 1000; }
+.header-container { display:flex; align-items:center; justify-content:space-between; max-width: 1200px; margin: 0 auto; gap:15px; }
+.logo-section { display:flex; align-items:center; gap:15px; }
+.logo { width:55px; height:55px; border-radius:50%; object-fit:cover; border: 3px solid #00cfcf; }
+.title-area h1 { margin:0; font-size:22px; text-transform: uppercase; letter-spacing: 1.5px; }
+.slogan { font-size:13px; color:#00cfcf; display: block; margin-top: 3px; }
 
-        .container{
-            max-width:1000px;
-            margin:auto;
-            padding:20px;
-        }
+/* PAGE STYLE */
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f6f8;
+}
 
-        .subject-card{
-            background:white;
-            padding:15px;
-            margin-bottom:15px;
-            border-radius:8px;
-            box-shadow:0 3px 8px rgba(0,0,0,0.1);
-        }
+/* SEMESTER TITLE */
+.semester-title{
+    text-align:center;
+    margin:25px 0 10px 0;
+    font-size:24px;
+}
 
-        .subject-card h3{
-            margin-top:0;
-        }
-    </style>
+/* BUTTON GRID */
+.subject-grid{
+    max-width:900px;
+    margin:20px auto;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:center;
+}
+
+/* SUBJECT BUTTON */
+.subject-btn{
+    background:white;
+    border:2px solid #00cfcf;
+    padding:10px 14px;
+    font-size:14px;
+    cursor:pointer;
+    text-decoration:none;
+    color:black;
+    transition:0.2s;
+}
+
+.subject-btn:hover{
+    background:#00cfcf;
+    color:white;
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="header">
-    <h2>Semester 1</h2>
-</div>
-
-<div class="container">
-
-    <div class="subject-card">
-        <h3>Pharmaceutics I</h3>
-        <p>Notes, Important Questions, Practical Manuals</p>
+<header>
+    <div class="header-container">
+        <div class="logo-section">
+            <img src="01.png" alt="PharmaTutorHub Logo" class="logo"> 
+            <div class="title-area">
+                <h1>PharmaTutorHub</h1>
+                <span class="slogan">Your Support = PharmaTutorHub ❤️</span>
+            </div>
+        </div>
     </div>
+</header>
 
-    <div class="subject-card">
-        <h3>Pharmaceutical Chemistry I</h3>
-        <p>Notes, Important Questions, Practical Manuals</p>
-    </div>
+<h2 class="semester-title">Semester 1</h2>
 
-    <div class="subject-card">
-        <h3>Human Anatomy & Physiology</h3>
-        <p>Notes, Important Questions, Practical Manuals</p>
-    </div>
+<div class="subject-grid">
+
+<a href="#" class="subject-btn">Human Anatomy and Physiology</a>
+<a href="#" class="subject-btn">Pharmaceutical Analysis I</a>
+<a href="#" class="subject-btn">Pharmaceutics I</a>
+<a href="#" class="subject-btn">Pharmaceutical Inorganic Chemistry</a>
+<a href="#" class="subject-btn">Communication Skills</a>
+<a href="#" class="subject-btn">Remedial Biology</a>
+<a href="#" class="subject-btn">Remedial Mathematics</a>
 
 </div>
 
