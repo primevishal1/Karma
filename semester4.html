@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PharmaTutorHub - Semester 4</title>
+
+<style>
+/* BASE */
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f6f8;
+    color:#222;
+}
+
+/* HEADER */
+header{
+    background:black;
+    padding:12px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
+    transition:all 0.3s ease;
+}
+
+/* Shrink effect */
+header.shrink{
+    padding:6px 20px;
+    opacity:0.85;
+    backdrop-filter: blur(8px);
+}
+
+/* Logo shrink */
+header.shrink .logo{
+    width:40px;
+    height:40px;
+    transition:0.3s;
+}
+
+/* Title shrink */
+header.shrink .title-area h1{
+    font-size:16px;
+}
+
+.header-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    max-width:1200px;
+    margin:auto;
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #00a6a6;
+}
+
+.title-area h1{
+    margin:0;
+    font-size:20px;
+    color:white;
+    transition: 0.3s;
+}
+
+.slogan{
+    font-size:12px;
+    color:#00a6a6;
+}
+
+/* MENU */
+.menu a{
+    color:white;
+    margin-left:18px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.menu a:hover{
+    color:#00cfcf;
+}
+
+/* HERO */
+.hero-banner{
+    width:100%;
+    aspect-ratio:16/9;
+    max-height:500px;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* SECTION */
+.section{
+    padding:30px 20px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.section h2{
+    margin-bottom:15px;
+}
+
+/* CARD ROW */
+.row-container{
+    position:relative;
+}
+
+.card-row{
+    display:flex;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    gap:20px;
+    padding:15px 5px 25px 5px;
+    scrollbar-width: none;
+}
+
+.card-row::-webkit-scrollbar{
+    display:none;
+}
+
+/* CARD - STYLES */
+.card{
+    min-width:250px;
+    width:250px;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    flex-shrink:0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card:hover{
+    transform:scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    z-index: 5;
+}
+
+.card img{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:12px;
+}
+
+.card-content h3{
+    margin:0 0 5px 0;
+    font-size:16px;
+    color: #333;
+}
+
+.card-content p{
+    font-size:13px;
+    color:#666;
+    line-height: 1.4;
+}
+
+/* SCROLL BUTTONS */
+.scroll-btn{
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+    background:white;
+    border:none;
+    color:#333;
+    font-size:22px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor:pointer;
+    z-index:10;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-btn{ left:-15px; }
+.right-btn{ right:-15px; }
+
+/* OUTCOME BOX */
+.outcome-section{
+    max-width:1000px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+.outcome-box{
+    background:#F9ECFE;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.outcome-box h2{
+    color:black;
+    margin-bottom:15px;
+}
+
+.outcome-box p{
+    color:black;
+    font-size:15px;
+    line-height:1.6;
+}
+
+.outcome-list{
+    margin-top:15px;
+    padding-left:20px;
+}
+
+.outcome-list li{
+    margin-bottom:8px;
+}
+
+/* QUOTE BOX */
+.quote-section{
+    max-width:1000px;
+    margin:30px auto 50px auto;
+    padding:0 20px;
+}
+
+.quote-box{
+    background:#CCDDFF;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    text-align:center;
+}
+
+.quote-text{
+    font-size:18px;
+    font-style:italic;
+    line-height:1.6;
+}
+
+.quote-author{
+    margin-top:15px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    .header-container{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+    .menu{
+        display:none;
+    }
+    .scroll-btn{
+        display:none;
+    }
+    .card{
+        min-width: 80vw;
+        width: 80vw;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-section">
+            <img src="01.png" class="logo">
+            <div class="title-area">
+                <h1>PharmaTutorHub</h1>
+                <div class="slogan">Your Support = PharmaTutorHub ❤️</div>
+            </div>
+        </div>
+        <nav class="menu">
+            <a href="#">Home</a>
+            <a href="#">Semesters</a>
+            <a href="#">Notes</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<div class="hero-banner">
+    <img src="banner1.jpg" alt="Pharmacy Banner">
+</div>
+
+<div class="section">
+    <h2>Subjects - Semester 4</h2>
+    <div class="row-container">
+        <button class="scroll-btn left-btn" onclick="scrollRow(-300)">❮</button>
+        <div class="card-row" id="cardRow">
+            
+            <div class="card">
+                <img src="organic3.jpg">
+                <div class="card-content">
+                    <h3>Pharmaceutical Organic Chemistry III</h3>
+                    <p>Stereochemistry, nomenclature and reactions of chiral molecules.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="med-chem1.jpg">
+                <div class="card-content">
+                    <h3>Medicinal Chemistry I</h3>
+                    <p>Structure-activity relationship (SAR) and synthesis of drugs.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="physical-pharma2.jpg">
+                <div class="card-content">
+                    <h3>Physical Pharmaceutics II</h3>
+                    <p>Study of colloids, rheology, and drug stability kinetics.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="pharmacology1.jpg">
+                <div class="card-content">
+                    <h3>Pharmacology I</h3>
+                    <p>General pharmacology and mechanism of drug action on various systems.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="pharmacognosy1.jpg">
+                <div class="card-content">
+                    <h3>Pharmacognosy I</h3>
+                    <p>Study of drugs from natural sources and their classification.</p>
+                </div>
+            </div>
+
+        </div>
+        <button class="scroll-btn right-btn" onclick="scrollRow(300)">❯</button>
+    </div>
+</div>
+
+<section class="outcome-section">
+    <div class="outcome-box">
+        <h2>What You Will Gain</h2>
+        <p>After studying these subjects, students will be able to:</p>
+        <ul class="outcome-list">
+            <li>Understand fundamental concepts clearly</li>
+            <li>Improve practical and theoretical knowledge</li>
+            <li>Prepare better for examinations</li>
+            <li>Build a strong foundation for advanced subjects</li>
+        </ul>
+    </div>
+</section>
+
+<section class="quote-section">
+    <div class="quote-box">
+        <p class="quote-text">
+        "Success in pharmacy is not only about memorizing drugs, but understanding patients, science, and responsibility."
+        </p>
+        <div class="quote-author">— PharmaTutorHub</div>
+    </div>
+</section>
+
+<script>
+// Header Scroll Effect
+window.addEventListener("scroll", function() {
+    const header = document.querySelector("header");
+    if (window.scrollY > 50) {
+        header.classList.add("shrink");
+    } else {
+        header.classList.remove("shrink");
+    }
+});
+
+// Horizontal Scroll Function
+function scrollRow(value){
+    document.getElementById("cardRow").scrollLeft += value;
+}
+</script>
+
+</body>
+  </html>
+  
