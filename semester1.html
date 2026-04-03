@@ -156,8 +156,16 @@ header.shrink .title-area h1{
 
 .card img{
     width:100%;
-    aspect-ratio:16/9;
+    height:160px;   /* fixed height for mobile */
     object-fit:cover;
+}
+
+@media(min-width:768px){
+    .card img{
+        height:auto;
+        aspect-ratio:16/9;
+    }
+}
 }
 
 .card-content{
